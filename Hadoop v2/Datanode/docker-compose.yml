@@ -1,0 +1,33 @@
+version: "1.0"
+
+
+# Owner: Bahaeddine FERIANI
+
+
+services:
+  datanode1:
+    image: datanode
+    container_name: datanode1
+    volumes:
+      - hadoop:/hadoop/dfs/data
+    environment:
+      - DAEMON=datanode
+    networks:
+      - kepler
+  datanode2:
+    image: datanode
+    container_name: datanode2
+    volumes:
+      - hadoop:/hadoop/dfs/data
+    environment:
+      - DAEMON=datanode
+    networks:
+      - kepler
+
+volumes:
+  hadoop:
+    name: hadoop
+networks:
+  kepler:
+    name: kepler
+    driver: bridge

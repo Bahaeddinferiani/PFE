@@ -1,0 +1,27 @@
+version: "1.0"
+
+
+# Owner: Bahaeddine FERIANI
+
+
+services:
+  namenode:
+    image: namenode
+    container_name: namenode
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop:/hadoop/dfs/name
+    environment:
+      - DAEMON=namenode
+    networks:
+      - kepler
+volumes:
+  hadoop:
+    name: hadoop
+   
+networks:
+  kepler:
+    name: kepler
+    driver: bridge
